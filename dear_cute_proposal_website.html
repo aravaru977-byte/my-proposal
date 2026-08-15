@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0; min-height:100vh; display:flex; justify-content:center; align-items:center;
+  font-family:Arial,sans-serif; overflow:hidden;
+  background:linear-gradient(135deg,#ffd6e7,#ffeef5,#ffd1df);
+  color:#5a2438;
+}
+.card{
+  width:min(92%,420px); padding:34px 25px; text-align:center;
+  background:rgba(255,255,255,.72); border-radius:28px;
+  box-shadow:0 18px 50px rgba(130,40,75,.18);
+  backdrop-filter:blur(10px); position:relative; z-index:2;
+}
+h1{font-size:34px;margin:5px 0 12px}
+p{font-size:17px;line-height:1.65}
+button{
+  border:0; border-radius:999px; padding:13px 25px; font-size:16px;
+  cursor:pointer; margin-top:15px; background:#e94f83; color:white;
+  box-shadow:0 8px 20px rgba(233,79,131,.25);
+}
+.hidden{display:none}
+.heart{position:fixed;bottom:-30px;font-size:22px;animation:float 6s linear infinite;opacity:.65}
+@keyframes float{to{transform:translateY(-115vh) rotate(25deg);opacity:0}}
+#no{background:#fff;color:#b43c65;margin-left:8px}
+</style>
+</head>
+<body>
+<div class="card">
+  <div id="start">
+    <div style="font-size:58px">💌</div>
+    <h1>Hey, Dear ❤️</h1>
+    <p>I made a little something for you...</p>
+    <button onclick="openLetter()">Open this ❤️</button>
+  </div>
+
+  <div id="letter" class="hidden">
+    <div style="font-size:52px">🫶🏻</div>
+    <h1>For You, Dear</h1>
+    <p>
+      I don't know exactly when it happened, but somewhere along the way,
+      you became a really special person to me.
+    </p>
+    <p>
+      With you, even the simplest moments feel a little more beautiful.
+      I don't need a special day to tell you this...
+    </p>
+    <p><b>I just want you to know that I really like you,
+    and I'd love to have you by my side. ❤️</b></p>
+    <h2>So, Dear... 🥹</h2>
+    <p><b>Will you be my person? ❤️</b></p>
+    <button onclick="yes()">YES ❤️</button>
+    <button id="no" onclick="moveNo()">Maybe 😳</button>
+  </div>
+
+  <div id="answer" class="hidden">
+    <div style="font-size:65px">❤️</div>
+    <h1>Yay! 🥹❤️</h1>
+    <p>Then let's make lots of beautiful memories together. 🫶🏻</p>
+    <p><b>— Made just for you, Dear ❤️</b></p>
+  </div>
+</div>
+
+<script>
+function openLetter(){
+  document.getElementById('start').classList.add('hidden');
+  document.getElementById('letter').classList.remove('hidden');
+}
+function yes(){
+  document.getElementById('letter').classList.add('hidden');
+  document.getElementById('answer').classList.remove('hidden');
+  for(let i=0;i<25;i++){
+    const h=document.createElement('div'); h.className='heart'; h.textContent='❤️';
+    h.style.left=Math.random()*100+'vw';
+    h.style.animationDelay=Math.random()*2+'s';
+    document.body.appendChild(h);
+  }
+}
+function moveNo(){
+  const b=document.getElementById('no');
+  b.style.position='fixed';
+  b.style.left=Math.random()*75+'vw';
+  b.style.top=Math.random()*75+'vh';
+}
+</script>
+</body>
+</html>
